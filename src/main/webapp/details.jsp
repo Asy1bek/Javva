@@ -34,7 +34,42 @@
     </form>
 </div>
 
-<%--Добавить кнопку удалить с модальным окном с текстом 'Вы действительно хотите удалить задание?'--%>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createTask">
+     Удалить
+</button>
+</div>
+
+
+<form action="/" method="post">
+    <div class="modal fade" id="createTask" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Новое задание</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Наименование:</label>
+                        <input class="form-control" placeholder="Наименование..." name="name">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Описание:</label>
+                        <textarea class="form-control" rows="3" placeholder="Описание..." name="description"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Крайний срок:</label>
+                        <input type="date" class="form-control" name="deadlineDate">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="btn btn-primary">Добавить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 
 </body>
 </html>
