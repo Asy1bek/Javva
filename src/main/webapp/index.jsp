@@ -11,7 +11,13 @@
 
 <div>
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createTask">
-        + Добавить задание
+        Добавить задание
+    </button>
+</div>
+
+<div>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteTask">
+        Удалить
     </button>
 </div>
 
@@ -24,6 +30,7 @@
             <th scope="col">Крайний срок</th>
             <th scope="col">Выполнено</th>
             <th scope="col">Детали</th>
+            <th scope="col">Удалить</th>
         </tr>
         </thead>
         <tbody>
@@ -38,13 +45,19 @@
             <td><%=task.getDeadlineDate()%></td>
             <td><%=task.isDone() ? "Да" : "Нет"%></td>
             <td><a class="btn btn-primary" href="/details?id=<%=task.getId()%>">Детали</a></td>
+            <td>
+                <form action="/deleteTask" method="post">
+                    <input type="hidden" name="taskId" value="<%=task.getId()%>">
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                </form>
+            </td>
         </tr>
         <%
             }
         } else {
         %>
         <tr>
-            <td colspan="5" class="text-center">Задачи отсутствуют</td>
+            <td colspan="6" class="text-center">Задачи отсутствуют</td>
         </tr>
         <%
             }
@@ -53,6 +66,7 @@
     </table>
 </div>
 
+<!-- Модальное окно для добавления новой задачи -->
 <form action="/" method="post">
     <div class="modal fade" id="createTask" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
@@ -83,5 +97,23 @@
         </div>
     </div>
 </form>
+<div class="modal fade" id="deleteTask" tabindex="-1" aria-labelledby="deleteTaskLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteTaskLabel">Удалить</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Вы действительно хотите удалить задание?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-danger">Удалить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
