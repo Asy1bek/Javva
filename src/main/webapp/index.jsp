@@ -65,8 +65,6 @@
         </tbody>
     </table>
 </div>
-
-<!-- Модальное окно для добавления новой задачи -->
 <form action="/" method="post">
     <div class="modal fade" id="createTask" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
